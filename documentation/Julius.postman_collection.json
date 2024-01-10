@@ -1,0 +1,933 @@
+{
+	"info": {
+		"_postman_id": "ec13e9a0-5e60-4413-8803-85414741b2c0",
+		"name": "Julius",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31409455"
+	},
+	"item": [
+		{
+			"name": "Usuário",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Teste\",\n    \"email\": \"caio6anos@gmail.com\",\n    \"username\": \"teste\",\n    \"senha\": \"220599\",\n    \"senhaConfirmacao\": \"220599\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/createUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"createUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Caio Teste\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/editUser/341d057f-14ba-4563-b8c0-2d748371306f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"editUser",
+								"341d057f-14ba-4563-b8c0-2d748371306f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/deleteUser/5a35fca4-de49-4cbe-b686-5ba12aa3b51f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"deleteUser",
+								"5a35fca4-de49-4cbe-b686-5ba12aa3b51f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Username",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"teste\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/getUserByUsername",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"getUserByUsername"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/getUserById/9c320108-21ed-494d-b675-18575e873c0a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"getUserById",
+								"9c320108-21ed-494d-b675-18575e873c0a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post User (Login)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"caiohenriquevp@hotmail.com\",\n    \"senha\": \"220599\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/loginUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"loginUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carteira",
+			"item": [
+				{
+					"name": "Create Carteira By user Id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/wallets/createCarteira/e19fa1ab-622e-4cf5-8ec3-8962f90e188c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"wallets",
+								"createCarteira",
+								"e19fa1ab-622e-4cf5-8ec3-8962f90e188c"
+							],
+							"query": [
+								{
+									"key": "usuarioId",
+									"value": "13b6aaf0-2225-4fa2-a955-d797fe96487a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Carteira By User id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/wallets/getCarteiraByUserId/341d057f-14ba-4563-b8c0-2d748371306f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"wallets",
+								"getCarteiraByUserId",
+								"341d057f-14ba-4563-b8c0-2d748371306f"
+							],
+							"query": [
+								{
+									"key": "usuarioId",
+									"value": "13b6aaf0-2225-4fa2-a955-d797fe96487a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "Create Categorias",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nomeCategorias\": [\"Alimentação\", \"Lazer\", \"Transporte\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/category/createCategorias/e5dd6adc-8572-4960-84db-623fb86763ed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"category",
+								"createCategorias",
+								"e5dd6adc-8572-4960-84db-623fb86763ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Saúde\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/category/createCategoria/5555d4da-278d-4f7f-9e5d-b21866b8a153",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"category",
+								"createCategoria",
+								"5555d4da-278d-4f7f-9e5d-b21866b8a153"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Categoria",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"f966e114-0fdc-491e-acba-793b60e52019\",\n    \"limite\": 50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/category/editCategoria/5555d4da-278d-4f7f-9e5d-b21866b8a153",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"category",
+								"editCategoria",
+								"5555d4da-278d-4f7f-9e5d-b21866b8a153"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"f966e114-0fdc-491e-acba-793b60e52019\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/category/deleteCategoria/5555d4da-278d-4f7f-9e5d-b21866b8a153",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"category",
+								"deleteCategoria",
+								"5555d4da-278d-4f7f-9e5d-b21866b8a153"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/category/getCategoriasByWalletId/e5dd6adc-8572-4960-84db-623fb86763ed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"category",
+								"getCategoriasByWalletId",
+								"e5dd6adc-8572-4960-84db-623fb86763ed"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Despesa",
+			"item": [
+				{
+					"name": "Create Despesa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipo\": \"Variável\",\n    \"data\": \"2023-11-16\",\n    \"tag\": \"Caio Paranhos\",\n    \"descricao\": \"Quentinha\",\n    \"origem\": \"Inter\",\n    \"valor\": 20,\n    \"categoriaId\": \"38564652-2612-485e-b5e3-811deed4607e\",\n    \"parcela\": 1,\n    \"nomeCobranca\": \"Ifood\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/expense/createDespesa/66aa3f09-e1e0-4770-8334-8a02ca21f39d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expense",
+								"createDespesa",
+								"66aa3f09-e1e0-4770-8334-8a02ca21f39d"
+							],
+							"query": [
+								{
+									"key": "categoriaId",
+									"value": "74a9ad1b-a3de-438a-9dd8-9a50b0373cb0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Despesa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"4fc4260a-49a1-480b-92f9-7d81ac76c92d\",\n    \"descricao\": \"Quentinha Almoço\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/expense/editDespesa/5555d4da-278d-4f7f-9e5d-b21866b8a153",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expense",
+								"editDespesa",
+								"5555d4da-278d-4f7f-9e5d-b21866b8a153"
+							],
+							"query": [
+								{
+									"key": "categoriaId",
+									"value": "74a9ad1b-a3de-438a-9dd8-9a50b0373cb0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Despesa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : \"9b2760d3-4a0d-41ae-b5db-27050babe85d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/expense/deleteDespesa/66aa3f09-e1e0-4770-8334-8a02ca21f39d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expense",
+								"deleteDespesa",
+								"66aa3f09-e1e0-4770-8334-8a02ca21f39d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Despesa By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"16c3f6d5-c704-4e52-9745-c69bfc2f2317\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/expense/getById/66aa3f09-e1e0-4770-8334-8a02ca21f39d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expense",
+								"getById",
+								"66aa3f09-e1e0-4770-8334-8a02ca21f39d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Despesas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/expense/66aa3f09-e1e0-4770-8334-8a02ca21f39d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expense",
+								"66aa3f09-e1e0-4770-8334-8a02ca21f39d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Despesas Mensais List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/expense/getDespesasMensaisList/66aa3f09-e1e0-4770-8334-8a02ca21f39d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expense",
+								"getDespesasMensaisList",
+								"66aa3f09-e1e0-4770-8334-8a02ca21f39d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Despesa Mensal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/expense/getValorDespesaMensal/66aa3f09-e1e0-4770-8334-8a02ca21f39d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expense",
+								"getValorDespesaMensal",
+								"66aa3f09-e1e0-4770-8334-8a02ca21f39d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Despesa Mensal Agrupada por Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/expense/getDespesasMensaisAgrupadasPorCategoria/66aa3f09-e1e0-4770-8334-8a02ca21f39d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expense",
+								"getDespesasMensaisAgrupadasPorCategoria",
+								"66aa3f09-e1e0-4770-8334-8a02ca21f39d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Receita",
+			"item": [
+				{
+					"name": "Create Receita",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"carteiraId\": \"66aa3f09-e1e0-4770-8334-8a02ca21f39d\",\n    \"data\": \"2023-11-15\",\n    \"descricao\": \"Salário\",\n    \"valor\": \"1800\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/credit/createReceita",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"credit",
+								"createReceita"
+							],
+							"query": [
+								{
+									"key": "categoriaId",
+									"value": "74a9ad1b-a3de-438a-9dd8-9a50b0373cb0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Receita",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"c051a356-bc3b-4047-a74f-85881155d3c1\",\n    \"valor\": \"6700\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/credit/editReceita/66aa3f09-e1e0-4770-8334-8a02ca21f39d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"credit",
+								"editReceita",
+								"66aa3f09-e1e0-4770-8334-8a02ca21f39d"
+							],
+							"query": [
+								{
+									"key": "categoriaId",
+									"value": "74a9ad1b-a3de-438a-9dd8-9a50b0373cb0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Receita",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"f0c85593-4ec2-4c4f-a8d2-2585e2b1e52e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/credit/deleteReceita/66aa3f09-e1e0-4770-8334-8a02ca21f39d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"credit",
+								"deleteReceita",
+								"66aa3f09-e1e0-4770-8334-8a02ca21f39d"
+							],
+							"query": [
+								{
+									"key": "categoriaId",
+									"value": "74a9ad1b-a3de-438a-9dd8-9a50b0373cb0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Receita By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"c051a356-bc3b-4047-a74f-85881155d3c1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/credit/getById/66aa3f09-e1e0-4770-8334-8a02ca21f39d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"credit",
+								"getById",
+								"66aa3f09-e1e0-4770-8334-8a02ca21f39d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Receitas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/credit/66aa3f09-e1e0-4770-8334-8a02ca21f39d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"credit",
+								"66aa3f09-e1e0-4770-8334-8a02ca21f39d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Receita Mensal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/credit/getReceitaMensal/e5dd6adc-8572-4960-84db-623fb86763ed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"credit",
+								"getReceitaMensal",
+								"e5dd6adc-8572-4960-84db-623fb86763ed"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Banco",
+			"item": [
+				{
+					"name": "Create Banco",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Banco Teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/bank/createBanco/b5bc86c2-ca51-4a13-9f5c-06c56350d77a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bank",
+								"createBanco",
+								"b5bc86c2-ca51-4a13-9f5c-06c56350d77a"
+							],
+							"query": [
+								{
+									"key": "usuarioId",
+									"value": "13b6aaf0-2225-4fa2-a955-d797fe96487a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Banco By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/bank/getBancoById/711169d3-8661-41b5-b5ad-86a85049a3df",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bank",
+								"getBancoById",
+								"711169d3-8661-41b5-b5ad-86a85049a3df"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bancos By User Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/bank/getBancoGroupByUserId/19a6e42d-9eeb-4c0e-ab26-5a405ed3e42b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bank",
+								"getBancoGroupByUserId",
+								"19a6e42d-9eeb-4c0e-ab26-5a405ed3e42b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ObjetivoFinanceiro",
+			"item": [
+				{
+					"name": "Create Objetivo Financeiro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Banco Teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/bank/createBanco/b5bc86c2-ca51-4a13-9f5c-06c56350d77a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bank",
+								"createBanco",
+								"b5bc86c2-ca51-4a13-9f5c-06c56350d77a"
+							],
+							"query": [
+								{
+									"key": "usuarioId",
+									"value": "13b6aaf0-2225-4fa2-a955-d797fe96487a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
