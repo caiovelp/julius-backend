@@ -28,6 +28,23 @@ Personal finance management API built with Node.js, Express, and SQLite.
 npm install
 ```
 
+### Environment Variables
+
+Copy [.env.example](.env.example) to `.env` and fill in the Firebase values before starting the server.
+
+Required variables:
+
+- `FIREBASE_API_KEY`
+- `FIREBASE_AUTH_DOMAIN`
+- `FIREBASE_PROJECT_ID`
+- `FIREBASE_STORAGE_BUCKET`
+- `FIREBASE_MESSAGING_SENDER_ID`
+- `FIREBASE_APP_ID`
+
+Optional:
+
+- `FIREBASE_MEASUREMENT_ID`
+
 ### Development Server
 
 ```bash
@@ -35,6 +52,14 @@ npm start
 ```
 
 Server runs on `http://localhost:3000`
+
+The start command runs a lightweight secret scan before booting the server.
+
+To run the scan directly:
+
+```bash
+npm run check:secrets
+```
 
 ### Project Structure
 
@@ -72,10 +97,12 @@ Server runs on `http://localhost:3000`
 - Database: SQLite file-based (`julius.db`)
 - CORS: Enabled
 - Port: 3000
+- Firebase config: loaded from environment variables via `.env`
 
 ## Notes
 
 - Database syncs automatically on startup
 - All models are auto-created via Sequelize
 - Frontend runs on port 3001 and connects to this API on port 3000
+- Never commit `.env` or any Firebase service-account JSON file
 

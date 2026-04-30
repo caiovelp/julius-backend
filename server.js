@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 
+require('./config/firebase');
+
 const {sequelize} = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const walletRoutes = require('./routes/carteiraRoutes');
@@ -10,24 +12,11 @@ const creditRoutes = require('./routes/receitaRoutes');
 const bankRoutes = require('./routes/bancoRoutes');
 const financialObjectiveRoutes = require('./routes/objetivoFinanceiroRoutes');
 
-const { initializeApp } = require('firebase/app');
-
-const firebaseConfig = {
-    apiKey: "REDACTED_FIREBASE_API_KEY",
-    authDomain: "julius-57188.firebaseapp.com",
-    projectId: "julius-57188",
-    storageBucket: "julius-57188.appspot.com",
-    messagingSenderId: "670111963101",
-    appId: "1:670111963101:web:e3dcc4b789563ad0560834",
-    measurementId: "G-35P9DM34JF"
-};
+require('./config/firebase');
 
 const app = express();
 app.use(cors());
 const port = 3000;
-
-// Initialize Firebase
-const appFirebase = initializeApp(firebaseConfig);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
