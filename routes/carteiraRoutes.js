@@ -4,7 +4,7 @@ const CarteiraController = require('../controllers/CarteiraController');
 
 const carteiraController = new CarteiraController();
 
+router.get('/', carteiraController.getCarteiras.bind(carteiraController));
 router.get('/getCarteiraByUserId/:usuarioId', carteiraController.getCarteiraByUserId.bind(carteiraController));
-router.post('/createCarteira/:usuarioId', carteiraController.createCarteira.bind(carteiraController));
 
 module.exports = router;

@@ -4,6 +4,10 @@ const { Op, sequelize, fn, col } = require('sequelize');
 class LancamentoService {
     constructor() {}
 
+    _isTerceiros(lancamento) {
+        return lancamento?.Categoria?.nome === 'Terceiros';
+    }
+
     /**
      * Criar novo lançamento
      * @param {Object} lancamentoData - { carteiraId, categoriaId, data, tag, parcela, observacao, nomeNaFatura, cartao, valor, conferido, divisaoValorOriginal, divisaoGrupoId }
@@ -184,32 +188,30 @@ class LancamentoService {
      */
     async getAgregacoesMensais(carteiraId, month, orcamentoMensal) {
         const lancamentos = await this.getLancamentosPorMes(carteiraId, month);
+        const lancamentosFinanceiros = lancamentos.filter((l) => !this._isTerceiros(l));
 
-        const totalMes = lancamentos.reduce((sum, l) => sum + parseFloat(l.valor), 0);
+        const totalMes = lancamentosFinanceiros.reduce((sum, l) => sum + parseFloat(l.valor), 0);
         const saldoDisponivel = orcamentoMensal - totalMes;
 
         // Totais por cartão
         const totaisPorCartao = {};
-        lancamentos.forEach((l) => {
+        lancamentosFinanceiros.forEach((l) => {
             const cartao = l.cartao || 'Sem cartão';
             totaisPorCartao[cartao] = (totaisPorCartao[cartao] || 0) + parseFloat(l.valor);
         });
 
         // Totais por tag
         const totaisPorTag = {};
-        lancamentos.forEach((l) => {
+        lancamentosFinanceiros.forEach((l) => {
             const tag = l.tag || 'Sem tag';
             totaisPorTag[tag] = (totaisPorTag[tag] || 0) + parseFloat(l.valor);
         });
 
         // Totais por categoria (exclusão de Terceiros)
         const totaisPorCategoria = {};
-        lancamentos.forEach((l) => {
-            // Só incluir se categoria não for "Terceiros"
-            if (l.Categoria && l.Categoria.nome !== 'Terceiros') {
-                const cat = l.Categoria.nome || 'Sem categoria';
-                totaisPorCategoria[cat] = (totaisPorCategoria[cat] || 0) + parseFloat(l.valor);
-            }
+        lancamentosFinanceiros.forEach((l) => {
+            const cat = l.Categoria?.nome || 'Sem categoria';
+            totaisPorCategoria[cat] = (totaisPorCategoria[cat] || 0) + parseFloat(l.valor);
         });
 
         return {

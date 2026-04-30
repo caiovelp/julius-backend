@@ -34,6 +34,12 @@ const violations = [];
 
 for (const file of trackedFiles) {
     const filePath = path.resolve(process.cwd(), file);
+    
+    // Skip files that don't exist (e.g., deleted but still in git index)
+    if (!fs.existsSync(filePath)) {
+        continue;
+    }
+    
     const content = fs.readFileSync(filePath, 'utf8');
 
     for (const pattern of patterns) {

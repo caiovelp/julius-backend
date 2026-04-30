@@ -11,6 +11,7 @@ describe('Lancamento API', () => {
     let userId;
     let walletId;
     let categoryId;
+    let terceirosCategoryId;
     let lancamentoId;
 
     beforeAll(async () => {
@@ -40,6 +41,21 @@ describe('Lancamento API', () => {
             carteiraId: walletId
         });
         categoryId = category.id;
+
+        const terceirosCategory = await Categoria.create({
+            nome: 'Terceiros',
+            carteiraId: walletId
+        });
+        terceirosCategoryId = terceirosCategory.id;
+
+        await request(app)
+            .post(`/lancamentos/${walletId}`)
+            .send({
+                data: '2026-04-10',
+                categoriaId: terceirosCategoryId,
+                valor: 80.00,
+                tag: 'Caio'
+            });
     });
 
     afterAll(async () => {
@@ -217,6 +233,14 @@ describe('Lancamento API', () => {
 
             const { orcamentoMensal, totalMes, saldoDisponivel } = res.body.agregacoes;
             expect(saldoDisponivel).toBe(orcamentoMensal - totalMes);
+        });
+
+        it('should ignore Terceiros in totalMes', async () => {
+            const res = await request(app)
+                .get(`/lancamentos/agregacoes/${walletId}`)
+                .query({ month: '2026-04' });
+
+            expect(res.body.agregacoes.totalMes).toBe(-2599.5);
         });
 
         it('should include category totals', async () => {

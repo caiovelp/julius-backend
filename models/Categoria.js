@@ -7,6 +7,14 @@ const Categoria = sequelize.define('Categoria', {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
     },
+    carteiraId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'Carteiras',
+            key: 'id',
+        },
+    },
     nome: {
         type: DataTypes.STRING,
         allowNull: false,
