@@ -45,6 +45,51 @@ Optional:
 
 - `FIREBASE_MEASUREMENT_ID`
 
+### Authentication Configuration
+
+**By default, authentication is disabled** (`AUTH_ENABLED=false`). This is ideal for personal use where you want to skip login friction.
+
+#### Modes
+
+**Personal/Local Mode** (default, `AUTH_ENABLED=false`):
+- All CRUD endpoints are accessible without authentication
+- No token validation required
+- Use `GUEST_USER_ID` to specify which user ID to default to
+- Perfect for single-user local app
+
+**Multi-User/Production Mode** (`AUTH_ENABLED=true`):
+- All CRUD endpoints require a valid Firebase ID token in the `Authorization: Bearer <token>` header
+- Tokens are validated server-side
+- Endpoints verify resource ownership (user can only access their own data)
+- Recommended for shared or cloud deployments
+
+#### Example: Using Guest Mode
+
+Default `.env`:
+```env
+AUTH_ENABLED=false
+GUEST_USER_ID=1
+```
+
+Request without token (allowed when `AUTH_ENABLED=false`):
+```bash
+curl http://localhost:3000/expense/getDespesasMensaisList/1
+```
+
+#### Example: Enabling Authentication
+
+`.env`:
+```env
+AUTH_ENABLED=true
+FIREBASE_API_KEY=...
+FIREBASE_AUTH_DOMAIN=...
+```
+
+Request with token (required when `AUTH_ENABLED=true`):
+```bash
+curl -H "Authorization: Bearer <firebase-id-token>" http://localhost:3000/expense/getDespesasMensaisList/1
+```
+
 ### Development Server
 
 ```bash
