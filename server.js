@@ -12,6 +12,8 @@ const expenseRoutes = require('./routes/despesaRoutes');
 const creditRoutes = require('./routes/receitaRoutes');
 const bankRoutes = require('./routes/bancoRoutes');
 const financialObjectiveRoutes = require('./routes/objetivoFinanceiroRoutes');
+const lancamentoRoutes = require('./routes/lancamentoRoutes');
+const divisaoGrupoRoutes = require('./routes/divisaoGrupoRoutes');
 
 require('./config/firebase');
 
@@ -42,8 +44,14 @@ app.use('/expense', expenseRoutes);
 app.use('/credit', creditRoutes);
 app.use('/bank', bankRoutes);
 app.use('/financialObjective', financialObjectiveRoutes);
+app.use('/lancamentos', lancamentoRoutes);
+app.use('/divisao-grupos', divisaoGrupoRoutes);
 
 // Iniciar o servidor
-app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
-})
+if (require.main === module) {
+    app.listen(port, () => {
+        console.log(`Servidor rodando na porta ${port}`);
+    });
+}
+
+module.exports = app;
