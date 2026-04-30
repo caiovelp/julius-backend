@@ -1,3 +1,8 @@
+[Architecture Software Documentation](https://docs.google.com/document/d/1s4usCP6rROECnTqg97EUGO6W2PARVF5A2OdLVb2ksm0/edit?usp=sharing)
+                                                         |
+
+This is a project developed in college for the Software Project course, and it was developed in conjunction with the [julius-frontend](https://github.com/caiovelp/julius-frontend).
+
 # Julius Backend
 
 Personal finance management API built with Node.js, Express, and SQLite.
@@ -105,4 +110,3 @@ npm run check:secrets
 - All models are auto-created via Sequelize
 - Frontend runs on port 3001 and connects to this API on port 3000
 - Never commit `.env` or any Firebase service-account JSON file
-
