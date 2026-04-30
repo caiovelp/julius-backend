@@ -1,5 +1,5 @@
 const {Op} = require("sequelize");
-const {sequelize} = require("../../config/db");
+const {sequelize} = require("../config/db");
 const {Despesa, Categoria} = require("../models/Associations");
 const CategoriaService = require("./CategoriaService");
 const Subject = require("./Subject");

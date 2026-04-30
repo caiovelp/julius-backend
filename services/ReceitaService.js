@@ -1,6 +1,6 @@
 const Receita = require('../models/Receita');
 const { Op} = require("sequelize");
-const {sequelize} = require('../../config/db');
+const {sequelize} = require('../config/db');
 const Subject = require("./Subject");
 
 class ReceitaService extends Subject {

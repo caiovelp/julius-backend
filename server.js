@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const {sequelize} = require('../config/db');
+const {sequelize} = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const walletRoutes = require('./routes/carteiraRoutes');
 const categoryRoutes = require('./routes/categoriaRoutes');

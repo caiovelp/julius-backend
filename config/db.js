@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+const path = require('path');
 
 class Database {
     constructor() {
@@ -9,11 +10,9 @@ class Database {
         Database.instance = this;
 
         this.sequelize = new Sequelize({
-            database: 'julius',
-            username: 'root',
-            password: 'root',
-            host: 'localhost',
-            dialect: 'postgres',
+            dialect: 'sqlite',
+            storage: path.join(__dirname, '../julius.db'),
+            logging: false,
         });
     }
 
