@@ -4,6 +4,7 @@ const cors = require('cors');
 require('./config/firebase');
 
 const {sequelize} = require('./config/db');
+const authMiddleware = require('./middleware/authMiddleware');
 const userRoutes = require('./routes/userRoutes');
 const walletRoutes = require('./routes/carteiraRoutes');
 const categoryRoutes = require('./routes/categoriaRoutes');
@@ -20,6 +21,9 @@ const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Optional authentication middleware (only active when AUTH_ENABLED=true)
+app.use(authMiddleware);
 
 // Conexão com o banco de dados
 sequelize.sync()
