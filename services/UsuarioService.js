@@ -1,9 +1,7 @@
 const {Usuario, Carteira} = require("../models/Associations");
 const { getAuth, deleteUser, signInWithEmailAndPassword, createUserWithEmailAndPassword } = require('firebase/auth');
 const CarteiraService = require("./CarteiraService");
-const DespesaService = require("./DespesaService");
 const CategoriaService = require("./CategoriaService");
-const ReceitaService = require("./ReceitaService");
 
 class UsuarioService {
     constructor() {
@@ -58,14 +56,8 @@ class UsuarioService {
             }
         });
         if(carteira) {
-            let despesaService = new DespesaService();
             let categoriaService = new CategoriaService();
-            let receitaService = new ReceitaService();
-
-            await despesaService.deleteAllDespesas(carteira.id);
             await categoriaService.deleteAllCategorias(carteira.id);
-            await receitaService.deleteAllReceitas(carteira.id);
-
             carteira.destroy();
         }
         else {
@@ -115,7 +107,18 @@ class UsuarioService {
         let carteira = await carteiraService.createCarteira(usuario.dataValues.id);
 
         let categoriaService = new CategoriaService();
-        let categoriasPadrao = ["Alimentação", "Lazer", "Transporte"];
+        let categoriasPadrao = [
+            'Alimentação e Bebida',
+            'Bela',
+            'Conta',
+            'Economias',
+            'Entretenimento',
+            'Fixo',
+            'Higiene e Saúde',
+            'Outros',
+            'Transporte',
+            'Terceiros',
+        ];
         await categoriaService.createCategorias(categoriasPadrao, carteira.dataValues.id, carteiraService);
     }
 

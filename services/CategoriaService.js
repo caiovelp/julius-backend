@@ -1,71 +1,30 @@
-const Categoria = require("../models/Categoria")
-const CarteiraService = require("./CarteiraService");
+const Categoria = require('../models/Categoria');
+const { Carteira } = require('../models/Associations');
+
+const DEFAULT_CATEGORIES = [
+    'Alimentação e Bebida', 'Bela', 'Conta', 'Economias',
+    'Entretenimento', 'Fixo', 'Higiene e Saúde', 'Outros', 'Transporte', 'Terceiros',
+];
 
 class CategoriaService {
-    constructor() {
+    async createCategorias(nomeCategorias, carteiraId) {
+        const carteira = await Carteira.findByPk(carteiraId);
+        if (!carteira) throw new Error('Carteira não encontrada');
 
-    }
-
-    async createCategoria(nome, carteiraId) {
-        let carteiraService = new CarteiraService();
-        let carteira = await carteiraService.getCarteiraById(carteiraId);
-        if(!carteira) {
-            throw new Error("Carteira não encontrada");
+        for (const nome of nomeCategorias) {
+            await Categoria.create({ nome, limite: 0, carteiraId });
         }
-
-        await Categoria.create({
-            nome: nome,
-            limite: 0,
-            carteiraId: carteiraId
-        });
-    }
-
-    // TODO: Arrumar um jeito de não usar o carteira service como parâmetro.
-    async createCategorias(nomeCategorias, carteiraId, carteiraService) {
-        let carteira = await carteiraService.getCarteiraById(carteiraId);
-        if(!carteira) {
-            throw new Error("Carteira não encontrada");
-        }
-
-        for (const nomeCategoria of nomeCategorias) {
-            await Categoria.create({
-                nome: nomeCategoria,
-                limite: 0,
-                carteiraId: carteiraId,
-            })
-        }
-    }
-
-    async getCategoria(id, carteiraId) {
-        return await Categoria.findOne({ where: { id, carteiraId } });
     }
 
     async getCategorias(carteiraId) {
-        return await Categoria.findAll({ where: { carteiraId } });
-    }
+        let categorias = await Categoria.findAll({ where: { carteiraId } });
 
-    async editCategoria(id, carteiraId, nome, limite) {
-        let updatedCategoria = await Categoria.update(
-            { nome, limite },
-            { where: { id, carteiraId } }
-        )
-
-        if(updatedCategoria[0] !== 1) {
-            throw new Error('Categoria não encontrada.');
-        }
-    }
-
-    async deleteCategoria(id, carteiraId) {
-        let categoria = await this.getCategoria(id, carteiraId);
-        if(!categoria) {
-            throw new Error("Categoria não encontrada");
+        if (categorias.length === 0) {
+            await this.createCategorias(DEFAULT_CATEGORIES, carteiraId);
+            categorias = await Categoria.findAll({ where: { carteiraId } });
         }
 
-        categoria.destroy();
-    }
-
-    async deleteAllCategorias(carteiraId) {
-        await Categoria.destroy({ where: { carteiraId } });
+        return categorias;
     }
 }
 

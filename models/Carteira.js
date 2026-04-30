@@ -11,6 +11,12 @@ const Carteira = sequelize.define('Carteira', {
         type: DataTypes.DECIMAL(10 , 2),
         allowNull: false,
     },
+    orcamentoMensal: {
+        type: DataTypes.DECIMAL(10, 2),
+        allowNull: true,
+        defaultValue: 0,
+        // Orçamento mensal para calcular saldo disponível
+    },
 }, {
     timestamps: false,
 });
